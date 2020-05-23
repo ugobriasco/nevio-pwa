@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
+  <link rel="manifest" href="manifest.json">
+  <!-- social tags -->
+  <title>Nevio Audioguide</title>
+  <meta name="description" content="Wear your headphones and start to walk: Nevio will tell you the stories of the places around you.">
+  <meta name="twitter:card" content="product">
+  <meta name="twitter:site" content="@ugobriasco">
+  <meta name="twitter:title" content="Nevio Audioguide">
+  <meta name="twitter:description" content="Wear your headphones and start to walk: Nevio will tell you the stories of the places around you.">
+  <meta name="twitter:creator" content="@ugobriasco">
+  <meta name="twitter:image" content="https://nevio.ml/img/bg-sm.jpg">
+  <meta property="og:title" content="Nevio Audioguide">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://nevio.ml">
+  <meta property="og:image" content="https://nevio.ml/img/bg-sm.jpg">
+  <meta property="og:description" content="Wear your headphones and start to walk: Nevio will tell you the stories of the places around you.">
+  <meta property="og:site_name" content="Nevio">
+
+  <!-- pwa -->
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icons/apple-icon-180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="img/icons/apple-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icons/apple-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/icons/apple-icon-120.png">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-2048-2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-2732-2048.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-1668-2388.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-2388-1668.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-1668-2224.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-2224-1668.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-1536-2048.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-2048-1536.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-1242-2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-2688-1242.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-1125-2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-2436-1125.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-828-1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-1792-828.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-1242-2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-2208-1242.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-750-1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-1334-750.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-640-1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/icons/apple-splash-1136-640.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+</head>
+  <body>
+    <div id="alert-container"></div>
+    <div id="toast-container"></div>
+    <nav id="navbar">
+      <div class="nav-branding">
+        <h1><span class="highlight">N</span>evio</h1>
+      </div>
+      <div class="nav-item">
+        <ul class="nav-links">
+          <li><a href="/" class="active">Media</a></li>
+          <li><a href="./discover.html">Stories</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="welcome-screen"></div>
+    <div id="osm-map"></div>
+    <main class="container" id="articles"> </main>
+    <footer>
+			<div class="footer-content left">
+				<a href="/">Nevio Audioguide </a><small id="app-version"></small>
+      </div>
+      <div class="footer-content right">
+        <span> <small>© 2020 by <a href="https://ugobriasco.me">Ugo Briasco</a></small></span>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="https://browser.sentry-cdn.com/5.15.5/bundle.min.js" integrity="sha384-wF7Jc4ZlWVxe/L8Ji3hOIBeTgo/HwFuaeEfjGmS3EXAG7Y+7Kjjr91gJpJtr+PAT" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+  </body>
+</html>

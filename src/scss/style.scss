@@ -1,0 +1,372 @@
+@charset "utf-8";
+@import './theme.scss';
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================Typography============================*/
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: $primary-black;
+  color: $primary-white;
+}
+
+a {
+  color: $primary-orange;
+}
+
+main {
+  min-height: calc(100% - 60px - 80px);
+}
+
+small {
+  font-size: 0.6em;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.hidden {
+  display: none;
+}
+
+.highlight {
+  color: $primary-orange;
+}
+
+/* ============================Buttons============================*/
+
+button {
+  border: none;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.btn-cta {
+  flex: 1;
+  background-color: $primary-orange;
+  color: $primary-white;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  flex: 1;
+  background-color: $primary-orange;
+  color: $primary-white;
+}
+
+.btn-play {
+  padding: 0;
+  margin: 5px;
+  width: 60px;
+  height: 74px;
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+
+  border-color: transparent transparent transparent $primary-black;
+  transition: 100ms all ease;
+  cursor: pointer;
+
+  // play state
+  border-style: solid;
+  border-width: 37px 0 37px 60px;
+
+  &.paused {
+    border-style: double;
+    border-width: 0px 0 0px 60px;
+  }
+
+  &:hover {
+    border-color: transparent transparent transparent $primary-grey;
+  }
+}
+
+.btn-close {
+  flex: 1;
+  background-color: $primary-orange;
+  color: $primary-white;
+}
+
+/* ============================Grid==============================*/
+.container {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.one-column {
+  margin-left: 6%;
+  margin-right: 6%;
+}
+
+/* ============================Card==============================*/
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  margin: 5%;
+  background-color: $primary-grey;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  padding-left: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.card-header-center {
+  flex: 1;
+}
+
+.card-header-right {
+  flex: 0.2;
+  background-color: $primary-orange;
+  color: $primary-white;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 10px;
+}
+
+.card-body {
+  display: block;
+  padding: 5%;
+  display: none;
+  overflow: scroll;
+}
+
+.card-footer {
+  display: none;
+  background-color: $primary-white;
+  color: $primary-black;
+}
+
+// expand the card
+.card-expanded {
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+}
+.card-expanded .card-header {
+  flex: 0.1;
+}
+.card-expanded .card-body {
+  flex: 0.8;
+  display: inline;
+}
+.card-expanded .card-footer {
+  flex: 0.1;
+  display: flex;
+}
+
+.card-active {
+  background-color: $primary-orange;
+  color: $primary-grey;
+}
+
+audio {
+  width: 97%;
+  height: 21px;
+  margin-bottom: 14px;
+}
+
+.audio-container,
+.sub-header {
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+/* ============================Banners==============================*/
+
+//throwAlert from https://www.w3schools.com/howto/howto_js_alert.asp
+/* The alert message box */
+#alert-container {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 50;
+}
+
+.alert {
+  opacity: 1;
+  padding: 20px;
+  color: $primary-white;
+  margin-bottom: 15px;
+  will-change: opacity;
+  min-height: 20px;
+  transition: all 250ms ease-out;
+  &.success {
+    background-color: $primary-green;
+  }
+  &.warning {
+    background-color: $primary-yellow;
+    color: $primary-black;
+    .closebtn:hover {
+      color: $primary-grey;
+    }
+  }
+  &.info {
+    background-color: $primary-blue;
+  }
+  &.danger {
+    background-color: $primary-red;
+  }
+}
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: inherit;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: $secondary-grey;
+}
+
+/* ============================Home Page==============================*/
+
+.welcome-screen {
+  height: calc(100% - 30px);
+  width: 100%;
+  background-color: $primary-black;
+}
+
+.jumbotron {
+  height: calc(100% - 30px);
+  padding: 4%;
+  padding-bottom: 0;
+  text-align: center;
+  background-image: url('/img/bg-sm.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.jumbotron > h2 {
+  font-size: 2.5em;
+  font-weight: 100;
+}
+.jumbotron > .follow {
+  line-height: 1.5;
+  font-size: 1em;
+  letter-spacing: 1px;
+  padding-bottom: 8vh;
+}
+
+.credits {
+  margin-top: -3%;
+  text-align: right;
+  margin-right: 5px;
+  font-size: 0.6em;
+}
+
+/* ============================Navbar==============================*/
+nav {
+  margin: 0;
+  height: 60px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+}
+
+.nav-branding {
+  flex: 0.3;
+}
+
+.nav-item {
+  flex: 1;
+  & h1,
+  li,
+  ul {
+    margin: 0;
+  }
+}
+
+.nav-item > h1 {
+  padding-top: 15px;
+}
+
+.nav-links {
+  height: 100%;
+  list-style-type: none;
+  text-align: right;
+}
+
+.nav-links > li {
+  display: inline-block;
+  & a {
+    border-radius: 15px 15px 0 0;
+    display: block;
+    padding-top: 21px;
+    padding-bottom: 21px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  & a:hover {
+    background-color: $darker-orange;
+    color: $primary-white;
+  }
+
+  & a.active {
+    background-color: $primary-orange;
+    color: $primary-white;
+  }
+}
+/* ============================Footer==============================*/
+
+footer {
+  width: 88%;
+  height: 80px;
+  padding-left: 6%;
+  padding-right: 6%;
+  background-color: $primary-black;
+  display: flex;
+}
+
+.footer-content {
+  margin: auto;
+  flex: 1;
+}
+
+.footer-content a {
+  text-decoration: none;
+}

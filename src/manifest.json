@@ -1,0 +1,22 @@
+{
+  "short_name": "Nevio",
+  "name": "Nevio Audioguide",
+  "background_color": "#252831",
+  "display": "standalone",
+  "theme_color": "#252831",
+  "start_url": "index.html?launcher=true",
+  "icons": [
+    {
+      "src": "img/icons/manifest-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "img/icons/manifest-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

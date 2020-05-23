@@ -1,0 +1,4 @@
+const CFG = {};
+
+CFG.NEVIO_API_ENDPOINT = 'http://localhost:8000';
+CFG.GOOGLE_API_KEY = 'YOUR_GOOGLE_API_KEY';
