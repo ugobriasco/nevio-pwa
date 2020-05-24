@@ -6,7 +6,7 @@ DBHelper.STORIES_GEOSEARCH_RADIUS = 5000;
 
 // Check if there is internet connection, if not throw an allert
 DBHelper.checkConnectivity = () => {
-  return fetch(`${DBHelper.API_ENDPOINT}/api/status`, {
+  return fetch(`${DBHelper.API_ENDPOINT}/status`, {
     method: 'HEAD'
   }).catch(err => {
     console.log('You are offline');
@@ -18,7 +18,7 @@ DBHelper.checkConnectivity = () => {
 // Get articles around the given location
 DBHelper.fetchMedia = props => {
   const { lat, lon } = props;
-  const URL = `${DBHelper.API_ENDPOINT}/api/media?lat=${lat}&lon=${lon}&radius=${DBHelper.MEDIA_GEOSEARCH_RADIUS}`;
+  const URL = `${DBHelper.API_ENDPOINT}/media?lat=${lat}&lon=${lon}&radius=${DBHelper.MEDIA_GEOSEARCH_RADIUS}`;
   const headers = {
     'accept-language': locale,
     'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ DBHelper.getCachedMedia = () => IDBHelper.getMedia();
 // Get stories around the given location
 DBHelper.fetchStories = props => {
   const { lat, lon } = props;
-  const URL = `${DBHelper.API_ENDPOINT}/api/story?lat=${lat}&lon=${lon}&radius=${DBHelper.STORIES_GEOSEARCH_RADIUS}`;
+  const URL = `${DBHelper.API_ENDPOINT}/story?lat=${lat}&lon=${lon}&radius=${DBHelper.STORIES_GEOSEARCH_RADIUS}`;
   const headers = {
     'accept-language': locale,
     'Content-Type': 'application/json'
@@ -71,8 +71,8 @@ DBHelper.fetchStories = props => {
 DBHelper.fetchStoryById = (id, lat, lon) => {
   const URL =
     lat && lon
-      ? `${DBHelper.API_ENDPOINT}/api/story/${id}?lat=${lat}&lon=${lon}`
-      : `${DBHelper.API_ENDPOINT}/api/story/${id}`;
+      ? `${DBHelper.API_ENDPOINT}/story/${id}?lat=${lat}&lon=${lon}`
+      : `${DBHelper.API_ENDPOINT}/story/${id}`;
 
   const headers = {
     'Content-Type': 'application/json'

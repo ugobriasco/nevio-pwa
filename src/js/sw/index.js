@@ -1,4 +1,4 @@
-const version = '1.3.09';
+const version = '1.3.11';
 const staticCacheName = `nevio-static-v${version}`;
 
 self.addEventListener('install', event => {
