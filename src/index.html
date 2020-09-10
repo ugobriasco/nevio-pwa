@@ -57,15 +57,19 @@
     <div id="toast-container"></div>
     <nav id="navbar">
       <div class="nav-branding">
-        <h1><span class="highlight">N</span>evio</h1>
+        <a href="/">
+          <h1><span class="highlight">N</span>evio</h1>
+        </a>
       </div>
-      <div class="nav-item">
-        <ul class="nav-links">
-          <li><a href="/" class="active">Media</a></li>
-          <li><a href="./discover.html">Stories</a></li>
-        </ul>
+      <div class="nav-item align-right">
+        <button class="burgerBtn" onclick="openNav()">&#9776;</button>
       </div>
     </nav>
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/">Media</a>
+      <a href="./discover.html">Stories</a>
+    </div>
     <div id="welcome-screen"></div>
     <div id="osm-map"></div>
     <main class="container" id="articles"> </main>

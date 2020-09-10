@@ -7,7 +7,7 @@ const REFRESH_PACE = 180000;
 //let map, userMarker, markerGroup, locaton;
 
 //Listeners
-document.addEventListener('DOMContentLoaded', event => {
+document.addEventListener('DOMContentLoaded', (event) => {
   initPage();
 
   // Set locale
@@ -23,16 +23,16 @@ document.addEventListener('DOMContentLoaded', event => {
   } else {
     // In case of no cache, there is no way to defer getLocation()
     DeviceAdapter.getLocation()
-      .then(loc => {
+      .then((loc) => {
         LocalStorage.setLocation(loc);
         map.init(loc);
         return DBHelper.fetchMedia(loc);
       })
-      .then(data => {
+      .then((data) => {
         media = data ? data : [];
         return renderMedia();
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }
 
   keepRefreshingData(REFRESH_PACE);
@@ -53,35 +53,35 @@ const initPage = () => {
 };
 
 // Anticipate rendering media by using the cached ones
-const renderCachedMedia = loc => {
+const renderCachedMedia = (loc) => {
   map.init(loc);
-  return DBHelper.getCachedMedia(loc).then(data => {
+  return DBHelper.getCachedMedia(loc).then((data) => {
     media = data ? data : [];
     return renderMedia();
   });
 };
 
 // Refresh job
-const keepRefreshingData = pace =>
-  setInterval(function() {
+const keepRefreshingData = (pace) =>
+  setInterval(function () {
     refreshData();
   }, pace);
 
 // Refresh the data - for instance - in a cronjob
 const refreshData = () =>
   DeviceAdapter.getLocation()
-    .then(loc => {
+    .then((loc) => {
       console.log('[home:refreshData] refresh! ' + loc.lat, loc.lon);
       LocalStorage.setLocation(loc);
       map.updatePosition(loc);
       map.clearMarkersGroup();
       return DBHelper.fetchMedia(loc);
     })
-    .then(data => {
+    .then((data) => {
       media = data ? data : [];
       return renderMedia();
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 
 // Print media list
 const renderMedia = () => {
@@ -92,7 +92,7 @@ const renderMedia = () => {
     return;
   }
 
-  media.forEach(mediaItem => {
+  media.forEach((mediaItem) => {
     const { title, articleHTML, dist, type, article, id } = mediaItem;
 
     switch (type) {
@@ -183,7 +183,7 @@ const openCard = (id, article) => {
 };
 
 // Dismiss a card with a given ID
-const dismissCard = id => {
+const dismissCard = (id) => {
   const selectedCard = document.getElementById(id);
   selectedCard.classList.remove('card-expanded');
   DeviceAdapter.speechSynthesis.stop();
@@ -191,7 +191,7 @@ const dismissCard = id => {
 };
 
 // Toggle Play/Pause
-const togglePlayPause = id => {
+const togglePlayPause = (id) => {
   // Choose the first button appended to the footer of a given card
   const targetButton = document.getElementById(id).childNodes[2].childNodes[0];
 
