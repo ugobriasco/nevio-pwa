@@ -1,13 +1,13 @@
 const sw = {};
 
 sw.PATH = '/sw.js';
-sw.version = '1.3.11';
+sw.version = '1.3.12';
 
 sw.init = () => {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
       .register(sw.PATH)
-      .then(function(reg) {
+      .then(function (reg) {
         if (!navigator.serviceWorker) {
           return;
         }
@@ -28,28 +28,28 @@ sw.init = () => {
           console.log('[sw::init] Service worker active');
         }
 
-        reg.addEventListener('updatefound', function() {
+        reg.addEventListener('updatefound', function () {
           sw.trackState(reg.installing);
         });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // registration failed
         console.log('[sw::init] Registration failed with ' + error);
       });
   }
 };
 
-sw.update = worker => worker.postMessage({ action: 'skipWaiting' });
+sw.update = (worker) => worker.postMessage({ action: 'skipWaiting' });
 
-sw.trackState = worker => {
-  worker.addEventListener('statechange', function() {
+sw.trackState = (worker) => {
+  worker.addEventListener('statechange', function () {
     if (worker.state == 'installed') {
       sw.updateReady(worker);
     }
   });
 };
 
-sw.updateReady = function(worker) {
+sw.updateReady = function (worker) {
   console.log('[sw::init] Updating...');
   // Here is a good place to change ask the user if the update shal be applied
   worker.postMessage({ action: 'skipWaiting' });
@@ -57,7 +57,7 @@ sw.updateReady = function(worker) {
   return;
 };
 
-sw.renderVersion = function() {
+sw.renderVersion = function () {
   const container = document.getElementById('app-version');
   if (!container) {
     return;
