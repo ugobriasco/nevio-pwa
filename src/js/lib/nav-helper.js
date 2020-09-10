@@ -13,17 +13,24 @@ const closeNav = () => {
 
 // Populate links in the sidebar
 const populateMenu = () => {
+  const locale = DeviceAdapter.getLocale();
   const list = [
-    { label: 'Media', link: '/' },
-    { label: 'Sotries', link: './discover.html' }
+    { key: 'home', label: 'Media', link: '/' },
+    { key: 'stories', label: 'Stories', link: './discover.html' }
   ];
 
   const sidenav = document.getElementById('sidenav-items');
   sidenav.innerHTML = '';
 
   list.forEach((item) => {
+    /*
+    Skip rendering sotries if the locale is it-IT.
+    The section "Stories" is still in alpha track thus it should not be rolled out fully
+    */
+    if (item.label == 'Stories' && locale != 'it-IT') {
+      return;
+    }
     let a = document.createElement('a');
-    console.log(item);
     a.href = item.link;
     a.innerHTML = item.label;
     sidenav.append(a);
