@@ -48,6 +48,10 @@ small {
   color: $primary-orange;
 }
 
+.align-right {
+  text-align: right;
+}
+
 /* ============================Buttons============================*/
 
 button {
@@ -125,6 +129,7 @@ button {
   background-color: $primary-grey;
   display: flex;
   flex-direction: column;
+  transition: margin-left 0.5s;
 }
 
 .card:hover {
@@ -307,13 +312,18 @@ nav {
 
 .nav-branding {
   flex: 0.3;
+  & a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .nav-item {
   flex: 1;
   & h1,
   li,
-  ul {
+  ul,
+  button {
     margin: 0;
   }
 }
@@ -351,6 +361,65 @@ nav {
     color: $primary-white;
   }
 }
+
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 9999; /* Stay on top */
+  top: 0;
+  right: 0;
+  background-color: $primary-black;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  & a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    transition: 0.3s;
+  }
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  margin-top: 15px;
+}
+
+/* The button used to open the sidebar */
+.burgerBtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  color: $primary-white;
+  padding: 10px 15px;
+  border: none;
+  height: 100%;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $primary-grey;
+  }
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {
+    padding-top: 15px;
+    & a {
+      font-size: 18px;
+    }
+  }
+}
+
 /* ============================Footer==============================*/
 
 footer {
