@@ -2,7 +2,7 @@
 
 const LocalStorage = {};
 
-LocalStorage.setLocation = loc => {
+LocalStorage.setLocation = (loc) => {
   console.log('[LocalStorage::setLocation] Updating cached location');
   const { lat, lon } = loc;
   localStorage.setItem('lat', lat);
@@ -20,3 +20,14 @@ LocalStorage.isTNCAccepted = () =>
   localStorage.getItem('nevio-tnc') === 'true' ? true : false;
 
 LocalStorage.acceptTNC = () => localStorage.setItem('nevio-tnc', true);
+
+LocalStorage.setLocale = (locale) => {
+  console.log('[LocalStorage::setLocale] Updating language preferences');
+  localStorage.setItem('language', locale);
+  return locale;
+};
+
+LocalStorage.getLocale = () => {
+  const locale = localStorage.getItem('language');
+  return locale ? locale : false;
+};
