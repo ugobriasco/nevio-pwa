@@ -35,12 +35,13 @@
         </a>
       </div>
       <div class="nav-item align-right">
-        <button class="burgerBtn" onclick="openNav()">&#9776;</button>
+        <button class="burgerBtn" onclick="SideNav.open()">&#9776;</button>
       </div>
     </nav>
     <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <div id="sidenav-items"></div>
+      <a href="javascript:void(0)" class="closebtn" onclick="SideNav.close()">&times;</a>
+      <div id="sidenav-links"></div>
+      <div id="language-selection"></div>
     </div>
     <div id="welcome-screen"></div>
     <div id="osm-map"></div>

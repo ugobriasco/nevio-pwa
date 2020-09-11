@@ -1,25 +1,27 @@
+const SideNav = {};
+
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-const openNav = () => {
+SideNav.open = () => {
   document.getElementById('mySidebar').style.width = '60%';
-  populateMenu();
+  SideNav._populate();
   //document.getElementById('page-wrapper').style.marginLeft = '250px';
 };
 
 /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-const closeNav = () => {
+SideNav.close = () => {
   document.getElementById('mySidebar').style.width = '0';
   //document.getElementById('page-wrapper').style.marginLeft = '0';
 };
 
 // Populate links in the sidebar
-const populateMenu = () => {
+SideNav._populate = () => {
   const locale = DeviceAdapter.getLocale();
   const list = [
     { key: 'home', label: 'Media', link: '/' },
     { key: 'stories', label: 'Stories', link: './discover.html' }
   ];
 
-  const sidenav = document.getElementById('sidenav-items');
+  const sidenav = document.getElementById('sidenav-links');
   sidenav.innerHTML = '';
 
   list.forEach((item) => {
@@ -35,4 +37,21 @@ const populateMenu = () => {
     a.innerHTML = item.label;
     sidenav.append(a);
   });
+  SideNav._renderLanguageSelection();
+};
+
+SideNav._renderLanguageSelection = () => {
+  const languageAvailable = Locale.getAvailable();
+  console.log(languageAvailable);
+
+  const div = document.getElementById('language-selection');
+  const select = document.createElement('select');
+  select.classList.add('language-select');
+  languageAvailable.forEach((language, i) => {
+    const option = document.createElement('option');
+    option.value = i;
+    option.innerHTML = language;
+    select.append(option);
+  });
+  div.append(select);
 };
