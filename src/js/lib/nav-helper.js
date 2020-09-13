@@ -41,17 +41,51 @@ SideNav._populate = () => {
 };
 
 SideNav._renderLanguageSelection = () => {
-  const languageAvailable = Locale.getAvailable();
+  const languageAvailable = ['Default'].concat(Locale.getAvailable());
   console.log(languageAvailable);
 
-  const div = document.getElementById('language-selection');
-  const select = document.createElement('select');
-  select.classList.add('language-select');
+  const container = document.getElementById('language-selection');
+  /*
+  <div id="sidenav-language-select" class="custom-select" onClick="SideNav.toggleDropDown()">
+      <div class="custom-select__trigger"><span>Tesla</span>
+          <div class="arrow"></div>
+      </div>
+      <div class="custom-options" >
+          <span class="custom-option selected" data-value="tesla">Tesla</span>
+          <span class="custom-option" data-value="volvo">Volvo</span>
+          <span class="custom-option" data-value="mercedes">Mercedes</span>
+      </div>
+  </div>
+
+  */
+
+  const box = document.createElement('div');
+  box.id = 'sidenav-language-select';
+  box.classList.add('custom-select');
+  box.setAttribute('onClick', 'SideNav.toggleDropDown()');
+  box.innerHTML = `<div class="custom-select__trigger"><span>${languageAvailable[0]}</span>
+      <div class="arrow"></div>
+  </div>`;
+
+  const select = document.createElement('div');
+  select.classList.add('custom-options');
   languageAvailable.forEach((language, i) => {
-    const option = document.createElement('option');
-    option.value = i;
-    option.innerHTML = language;
-    select.append(option);
+    const span = document.createElement('span');
+    span.classList.add('custom-option');
+    span.setAttribute('data-value', language);
+    span.innerHTML = language;
+    select.append(span);
   });
-  div.append(select);
+
+  box.append(select);
+  container.append(box);
+};
+
+SideNav.toggleDropDown = () => {
+  const select = document.getElementById('sidenav-language-select');
+  if (select.classList.contains('open')) {
+    select.classList.remove('open');
+  } else {
+    select.classList.add('open');
+  }
 };
