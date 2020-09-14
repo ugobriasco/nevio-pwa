@@ -79,7 +79,26 @@ const jsDiscoverStories = () =>
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./dist/js'));
 
-const js = gulp.series(gulp.parallel(jsHome, jsStory, jsDiscoverStories));
+const jsSettings = () =>
+  gulp
+    .src([
+      'config/config-local.js',
+      'src/js/vendor/*.js',
+      'src/js/lib/*.js',
+      'src/js/lib/components/*.js',
+      'src/js/page-settings.js'
+    ])
+    .pipe(
+      babel({
+        presets: ['@babel/env']
+      })
+    )
+    .pipe(concat('settings.js'))
+    .pipe(gulp.dest('./dist/js'));
+
+const js = gulp.series(
+  gulp.parallel(jsHome, jsStory, jsDiscoverStories, jsSettings)
+);
 
 //TEST ENV
 const jsHomeLocal = () =>
@@ -133,8 +152,30 @@ const jsDiscoverStoriesLocal = () =>
     .pipe(concat('discover-stories.js'))
     .pipe(gulp.dest('./dist/js'));
 
+const jsSettingsLocal = () =>
+  gulp
+    .src([
+      'config/config-local.js',
+      'src/js/vendor/*.js',
+      'src/js/lib/*.js',
+      'src/js/lib/components/*.js',
+      'src/js/page-settings.js'
+    ])
+    .pipe(
+      babel({
+        presets: ['@babel/env']
+      })
+    )
+    .pipe(concat('settings.js'))
+    .pipe(gulp.dest('./dist/js'));
+
 const jsLocal = gulp.series(
-  gulp.parallel(jsHomeLocal, jsStoryLocal, jsDiscoverStoriesLocal)
+  gulp.parallel(
+    jsHomeLocal,
+    jsStoryLocal,
+    jsDiscoverStoriesLocal,
+    jsSettingsLocal
+  )
 );
 
 // COMMONS
