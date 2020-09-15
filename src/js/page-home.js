@@ -11,7 +11,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
   initPage();
 
   // Set locale
-  locale = DeviceAdapter.getLocale();
+  locale =
+    Locale.get() == null || Locale.get() == 'null'
+      ? DeviceAdapter.getLocale()
+      : Locale.get();
+
   console.log('[home::getLocale] ' + locale);
 
   // Check location and render content
@@ -26,7 +30,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       .then((loc) => {
         LocalStorage.setLocation(loc);
         map.init(loc);
-        return DBHelper.fetchMedia(loc);
+        return DBHelper.fetchMedia({ ...loc, locale });
       })
       .then((data) => {
         media = data ? data : [];
@@ -75,7 +79,7 @@ const refreshData = () =>
       LocalStorage.setLocation(loc);
       map.updatePosition(loc);
       map.clearMarkersGroup();
-      return DBHelper.fetchMedia(loc);
+      return DBHelper.fetchMedia({ ...loc, locale });
     })
     .then((data) => {
       media = data ? data : [];

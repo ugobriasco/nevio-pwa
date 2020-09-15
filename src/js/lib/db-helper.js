@@ -8,7 +8,7 @@ DBHelper.STORIES_GEOSEARCH_RADIUS = 5000;
 DBHelper.checkConnectivity = () => {
   return fetch(`${DBHelper.API_ENDPOINT}/status`, {
     method: 'HEAD'
-  }).catch(err => {
+  }).catch((err) => {
     console.log('You are offline');
     Alert.throwWarning('You are offline!');
     return err;
@@ -16,26 +16,27 @@ DBHelper.checkConnectivity = () => {
 };
 
 // Get articles around the given location
-DBHelper.fetchMedia = props => {
-  const { lat, lon } = props;
-  const URL = `${DBHelper.API_ENDPOINT}/media?lat=${lat}&lon=${lon}&radius=${DBHelper.MEDIA_GEOSEARCH_RADIUS}`;
+DBHelper.fetchMedia = (props) => {
+  const { lat, lon, locale } = props;
+  const URL = `${DBHelper.API_ENDPOINT}/media?lat=${lat}&lon=${lon}&lang=${locale}&radius=${DBHelper.MEDIA_GEOSEARCH_RADIUS}`;
   const headers = {
-    'accept-language': locale,
     'Content-Type': 'application/json'
   };
 
+  console.log(URL);
+
   return fetch(URL, { headers })
-    .then(res => res.json())
-    .catch(err => {
+    .then((res) => res.json())
+    .catch((err) => {
       console.log(
         err,
         '[dbHelper::fetchMedia] Connectivity error, serving media from cache'
       );
       return IDBHelper.getMedia();
     })
-    .then(media => IDBHelper.refreshMedia(media))
+    .then((media) => IDBHelper.refreshMedia(media))
     .then(() => IDBHelper.getMedia())
-    .catch(err => {
+    .catch((err) => {
       console.log(err, '[dbHelper::fetchMedia] Error by fetching from cache ');
     });
 };
@@ -43,16 +44,14 @@ DBHelper.fetchMedia = props => {
 DBHelper.getCachedMedia = () => IDBHelper.getMedia();
 
 // Get stories around the given location
-DBHelper.fetchStories = props => {
-  const { lat, lon } = props;
-  const URL = `${DBHelper.API_ENDPOINT}/story?lat=${lat}&lon=${lon}&radius=${DBHelper.STORIES_GEOSEARCH_RADIUS}`;
+DBHelper.fetchStories = (props) => {
+  const { lat, lon, locale } = props;
+  const URL = `${DBHelper.API_ENDPOINT}/story?lat=${lat}&lon=${lon}&lang=${locale}&radius=${DBHelper.STORIES_GEOSEARCH_RADIUS}`;
   const headers = {
-    'accept-language': locale,
     'Content-Type': 'application/json'
   };
-
   return fetch(URL, { headers })
-    .then(res => {
+    .then((res) => {
       if (res.status !== 200) {
         console.log(
           '[dbHelper::fetchStories] There was a problem: ' +
@@ -64,7 +63,9 @@ DBHelper.fetchStories = props => {
         return res.json();
       }
     })
-    .catch(err => console.log('[dbHelper::fetchStories] Fetch error: ' + err));
+    .catch((err) =>
+      console.log('[dbHelper::fetchStories] Fetch error: ' + err)
+    );
 };
 
 // Get a single storz biy passing id, lat, lon´
@@ -78,7 +79,7 @@ DBHelper.fetchStoryById = (id, lat, lon) => {
     'Content-Type': 'application/json'
   };
   return fetch(URL, { headers })
-    .then(res => {
+    .then((res) => {
       if (res.status !== 200) {
         console.log(
           '[dbHelper::fetchStoryById] There was a problem: ' +
@@ -90,10 +91,10 @@ DBHelper.fetchStoryById = (id, lat, lon) => {
         return res.json();
       }
     })
-    .catch(err =>
+    .catch((err) =>
       console.log('[dbHelper::fetchStoryById] Fetch error: ' + err)
     );
 };
 
 // Story page URL.
-DBHelper.urlForStory = story => `./story.html?id=${story.id}`;
+DBHelper.urlForStory = (story) => `./story.html?id=${story.id}`;
