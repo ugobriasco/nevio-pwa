@@ -22,12 +22,14 @@ LocalStorage.isTNCAccepted = () =>
 LocalStorage.acceptTNC = () => localStorage.setItem('nevio-tnc', true);
 
 LocalStorage.setLocale = (locale) => {
-  console.log('[LocalStorage::setLocale] Updating language preferences');
-  localStorage.setItem('language', locale);
+  console.log(
+    `[LocalStorage::setLocale] Updating language preferences to ${locale}`
+  );
+  localStorage.setItem('custom-lang', locale);
   return locale;
 };
 
 LocalStorage.getLocale = () => {
-  const locale = localStorage.getItem('language');
-  return locale ? locale : false;
+  const locale = localStorage.getItem('custom-lang');
+  return locale ? locale : null;
 };
