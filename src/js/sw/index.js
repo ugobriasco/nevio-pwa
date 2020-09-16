@@ -1,4 +1,4 @@
-const version = '1.3.12';
+const version = '1.4.0';
 const staticCacheName = `nevio-static-v${version}`;
 
 self.addEventListener('install', (event) => {
@@ -12,9 +12,11 @@ self.addEventListener('install', (event) => {
           './index.html',
           './story.html',
           './discover.html',
+          './settings.html',
           './js/home.js',
           './js/story.js',
           './js/discover-stories.js',
+          './js/settings.js',
           './css/style.css',
           './img/bg-sm.jpg',
           './manifest.json',
