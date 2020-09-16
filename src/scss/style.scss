@@ -120,6 +120,14 @@ button {
   margin-right: 6%;
 }
 
+@media screen and (min-width: 600px) {
+  .one-column {
+    margin-left: calc((100% - 550px) / 2);
+    margin-left: calc((100% - 550px) / 2);
+    width: 550px;
+  }
+}
+
 /* ============================Card==============================*/
 
 .card {
@@ -212,9 +220,6 @@ audio {
 }
 
 /* ============================Select==============================*/
-.select {
-}
-
 .custom-select-wrapper {
   position: relative;
   user-select: none;
@@ -236,14 +241,14 @@ audio {
   padding: 0 22px;
   font-size: 20px;
   font-weight: 300;
-  color: #3b3b3b;
+  color: $primary-white;
   height: 60px;
   line-height: 60px;
-  background: #ffffff;
+  background: $primary-orange;
   cursor: pointer;
   border-width: 2px 0 2px 0;
   border-style: solid;
-  border-color: #394a6d;
+  border-color: $primary-grey;
 }
 .custom-options {
   position: absolute;
@@ -251,9 +256,9 @@ audio {
   top: 100%;
   left: 0;
   right: 0;
-  border: 2px solid #394a6d;
+  border: 2px solid $primary-grey;
   border-top: 0;
-  background: #fff;
+  background: $primary-black;
   transition: all 0.5s;
   opacity: 0;
   visibility: hidden;
@@ -271,18 +276,19 @@ audio {
   padding: 0 22px 0 22px;
   font-size: 22px;
   font-weight: 300;
-  color: #3b3b3b;
+  color: $primary-orange;
   line-height: 60px;
   cursor: pointer;
   transition: all 0.5s;
 }
 .custom-option:hover {
   cursor: pointer;
-  background-color: #b2b2b2;
+  background-color: $darker-orange;
+  color: $primary-white;
 }
 .custom-option.selected {
-  color: #ffffff;
-  background-color: #305c91;
+  color: $primary-white;
+  background-color: $primary-orange;
 }
 
 .arrow {
@@ -302,12 +308,12 @@ audio {
 .arrow::before {
   left: -5px;
   transform: rotate(45deg);
-  background-color: #394a6d;
+  background-color: $primary-white;
 }
 .arrow::after {
   left: 5px;
   transform: rotate(-45deg);
-  background-color: #394a6d;
+  background-color: $primary-white;
 }
 .open .arrow::before {
   left: -5px;
