@@ -94,7 +94,6 @@ const describeLanguageSetting = (locale) => {
 
   const p = document.createElement('p');
   p.innerHTML = locale == 'null' ? defaultTxt : customTxt;
-  console.log(locale);
 
   div.append(p);
 };
