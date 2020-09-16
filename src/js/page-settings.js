@@ -24,6 +24,7 @@ const renderLanguageSelection = () => {
   container.append(box);
 
   renderLanguageOptions(locale);
+  describeLanguageSetting(locale);
 };
 
 const renderLanguageOptions = (locale) => {
@@ -71,6 +72,7 @@ const selectLanguage = (locale) => {
   Locale.set(locale);
   updateTranslations();
   renderLanguageOptions(locale);
+  describeLanguageSetting(locale);
 };
 
 const toggleDropDown = () => {
@@ -80,4 +82,19 @@ const toggleDropDown = () => {
   } else {
     select.classList.add('open');
   }
+};
+
+const describeLanguageSetting = (locale) => {
+  const div = document.getElementById('language-selection-label');
+  div.innerHTML = '';
+
+  const defaultTxt =
+    'Nevio uses the primary language of your device to fetch media';
+  const customTxt = 'Nevio uses the this language to fetch media';
+
+  const p = document.createElement('p');
+  p.innerHTML = locale == 'null' ? defaultTxt : customTxt;
+  console.log(locale);
+
+  div.append(p);
 };
