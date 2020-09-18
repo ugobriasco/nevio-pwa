@@ -1,6 +1,6 @@
 const Card = {};
 
-Card.renderAudioCard = props => {
+Card.renderAudioCard = (props) => {
   const { id, title, dist, container } = props;
   if (!validateInput) {
     return;
@@ -35,7 +35,7 @@ Card.renderAudioCard = props => {
   container.append(card);
 };
 
-Card.renderArticleCard = props => {
+Card.renderArticleCard = (props) => {
   const { id, title, dist, container, articleHTML, article } = props;
   if (!validateInput) {
     return;
@@ -61,12 +61,12 @@ Card.renderArticleCard = props => {
 
   const buttonClose = document.createElement('button');
   buttonClose.className = 'btn-close';
-  buttonClose.setAttribute('onclick', `dismissCard(${id});`);
+  buttonClose.setAttribute('onclick', `dismissCard('${id}');`);
   buttonClose.innerHTML = '<strong>Close</strong>';
 
   const buttonPlay = document.createElement('button');
   buttonPlay.className = 'btn-play';
-  buttonPlay.setAttribute('onclick', `togglePlayPause(${id});`);
+  buttonPlay.setAttribute('onclick', `togglePlayPause('${id}');`);
 
   //Compose
   cardFooter.append(buttonPlay);
@@ -77,7 +77,7 @@ Card.renderArticleCard = props => {
   container.append(card);
 };
 
-Card.renderStoryCard = props => {
+Card.renderStoryCard = (props) => {
   const { id, title, dist, container, description, author } = props;
   if (!validateInput) {
     return;
@@ -128,7 +128,7 @@ Card.renderStoryCard = props => {
   container.append(card);
 };
 
-const validateInput = props => {
+const validateInput = (props) => {
   if (!props.id) {
     console.log('[Components::Card] missing card id. Card not rendered');
     return false;
@@ -144,7 +144,7 @@ const validateInput = props => {
   return true;
 };
 
-const renderCardHeader = props => {
+const renderCardHeader = (props) => {
   const { title, dist, id } = props;
 
   const cardHeader = document.createElement('div');
