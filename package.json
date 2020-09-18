@@ -1,6 +1,6 @@
 {
   "name": "nevio-pwa",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A PWA for Nevio Audioguide",
   "keywords": [],
   "main": "index.js",
