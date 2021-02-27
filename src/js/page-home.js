@@ -53,6 +53,8 @@ const initPage = () => {
     document.getElementById('articles').classList.add('hidden');
     document.getElementById('osm-map').classList.add('hidden');
     return renderWelcomeScreen();
+  } else {
+    Analitics.initGA();
   }
 };
 
@@ -154,7 +156,7 @@ const renderWelcomeScreen = () => {
   const tnc = document.createElement('div');
   tnc.classList.add('welcome-tnc');
   tnc.innerHTML =
-    '<small>This website uses cookies. By continuing to browse the site you agree to our use, terms and conditions. Check <a href="./terms.html">here</a> for more information</small>';
+    '<small>This website uses cookies. By continuing to browse the site you agree to our use, terms and conditions. Check <a href="./terms.html">here</a> for more information.</small>';
 
   hero.append(h2);
   hero.append(follow);
@@ -217,6 +219,7 @@ const togglePlayPause = (id) => {
 const onDismissWelcomeScreen = () => {
   const div = document.getElementById('welcome-screen');
   LocalStorage.acceptTNC();
+  Analitics.initGA();
   div.classList.add('hidden');
   document.getElementById('articles').classList.remove('hidden');
   document.getElementById('osm-map').classList.remove('hidden');
