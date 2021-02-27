@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>"
+    />
+    <link rel="manifest" href="manifest.json" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="nav-branding">
+        <a href="/">
+          <h1><span class="highlight">N</span>evio</h1>
+        </a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <h1>Terms and Conditions</h1>
+      <p>
+        Nevio is a non-profit project which uses some metrics to customise
+        better its content. Following everything you need to know:
+      </p>
+      <h2>Analytics</h2>
+      <p>We use Google Analytics for tracking purpose</p>
+      <ul>
+        <li>ga_clientId</li>
+      </ul>
+      <p>We use Sentry for tracking issues</p>
+      <h2>Location</h2>
+      <p>
+        We keep track of your location. This is an essential feature for this
+        application
+      </p>
+      <h2>Cache storage</h2>
+      <p>
+        This is a Progressive Web Application, which caches content for a better
+        offline-first experience. This is also essential
+      </p>
+    </main>
+    <footer>
+      <div class="footer-content left">
+        <a href="/">Nevio Audioguide </a><small id="app-version"></small>
+      </div>
+      <div class="footer-content right">
+        <span>
+          <small
+            >© 2020 by <a href="https://ugobriasco.me">Ugo Briasco</a></small
+          ></span
+        >
+      </div>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script
+      src="https://browser.sentry-cdn.com/5.15.5/bundle.min.js"
+      integrity="sha384-wF7Jc4ZlWVxe/L8Ji3hOIBeTgo/HwFuaeEfjGmS3EXAG7Y+7Kjjr91gJpJtr+PAT"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="js/home.js"></script>
+  </body>
+</html>

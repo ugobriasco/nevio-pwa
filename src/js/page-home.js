@@ -151,9 +151,15 @@ const renderWelcomeScreen = () => {
   cta.setAttribute('onclick', `onDismissWelcomeScreen();`);
   cta.innerHTML = "I'm ready";
 
+  const tnc = document.createElement('div');
+  tnc.classList.add('welcome-tnc');
+  tnc.innerHTML =
+    '<small>This website uses cookies. By continuing to browse the site you agree to our use, terms and conditions. Check <a href="./terms.html">here</a> for more information</small>';
+
   hero.append(h2);
   hero.append(follow);
   hero.append(cta);
+  hero.append(tnc);
 
   div.append(hero);
   div.append(credits);

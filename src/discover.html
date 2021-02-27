@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
-    <link rel="manifest" href="manifest.json">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>"
+    />
+    <link rel="manifest" href="manifest.json" />
     <!-- social tags -->
     <title>Nevio Audioguide</title>
-    <meta name="description" content="Wear your headphones and start to walk: Nevio will tell tell you the stories of the places around you." />
-    <meta name="twitter:card" content="product">
-    <meta name="twitter:site" content="@ugobriasco">
-    <meta name="twitter:title" content="Nevio Audioguide">
-    <meta name="twitter:description" content="Wear your headphones and start to walk: Nevio will tell tell you the stories of the places around you.">
-    <meta name="twitter:creator" content="@ugobriasco">
-    <meta name="twitter:image" content="https://nevio.ml/img/bg-sm.jpg">
+    <meta
+      name="description"
+      content="Wear your headphones and start to walk: Nevio will tell tell you the stories of the places around you."
+    />
+    <meta name="twitter:card" content="product" />
+    <meta name="twitter:site" content="@ugobriasco" />
+    <meta name="twitter:title" content="Nevio Audioguide" />
+    <meta
+      name="twitter:description"
+      content="Wear your headphones and start to walk: Nevio will tell tell you the stories of the places around you."
+    />
+    <meta name="twitter:creator" content="@ugobriasco" />
+    <meta name="twitter:image" content="https://nevio.ml/img/bg-sm.jpg" />
     <meta property="og:title" content="Nevio Audioguide" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://nevio.ml" />
     <meta property="og:image" content="https://nevio.ml/img/bg-sm.jpg" />
-    <meta property="og:description" content="Wear your headphones and start to walk: Nevio will tell tell you the stories of the places around you." />
+    <meta
+      property="og:description"
+      content="Wear your headphones and start to walk: Nevio will tell tell you the stories of the places around you."
+    />
     <meta property="og:site_name" content="Nevio" />
-
   </head>
   <body>
     <div id="alert-container"></div>
@@ -39,22 +53,33 @@
       </div>
     </nav>
     <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="SideNav.close()">&times;</a>
+      <a href="javascript:void(0)" class="closebtn" onclick="SideNav.close()"
+        >&times;</a
+      >
       <div id="sidenav-links"></div>
     </div>
     <div id="welcome-screen"></div>
     <div id="osm-map"></div>
     <main class="container" id="stories"></main>
     <footer>
-      <div class='footer-content left'>
-        <a href="/">Nevio Audioguide </a><small id='app-version'></small>
+      <div class="footer-content left">
+        <a href="/">Nevio Audioguide </a><small id="app-version"></small>
       </div>
-      <div class='footer-content right'>
-        <span> <small>&copy; 2020 by <a href="https://ugobriasco.me">Ugo Briasco</a></small></span>
+      <div class="footer-content right">
+        <span>
+          <small
+            >&copy; 2020 by <a href="https://ugobriasco.me">Ugo Briasco</a> |
+            <a href="./terms.html">Terms and Conditions</a></small
+          >
+        </span>
       </div>
     </footer>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-    <script src="https://browser.sentry-cdn.com/5.15.5/bundle.min.js" integrity="sha384-wF7Jc4ZlWVxe/L8Ji3hOIBeTgo/HwFuaeEfjGmS3EXAG7Y+7Kjjr91gJpJtr+PAT" crossorigin="anonymous"></script>
+    <script
+      src="https://browser.sentry-cdn.com/5.15.5/bundle.min.js"
+      integrity="sha384-wF7Jc4ZlWVxe/L8Ji3hOIBeTgo/HwFuaeEfjGmS3EXAG7Y+7Kjjr91gJpJtr+PAT"
+      crossorigin="anonymous"
+    ></script>
     <script type="text/javascript" src="js/discover-stories.js"></script>
   </body>
 </html>
