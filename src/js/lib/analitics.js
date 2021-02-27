@@ -11,17 +11,20 @@
   a.src = g;
   m.parentNode.insertBefore(a, m);
 })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-ga('create', 'UA-164642359-1', 'nevio.ml', {
-  anonymizeIp: true,
-  storage: 'none',
-  clientId: window.localStorage.getItem('ga_clientId')
-});
-ga(function (tracker) {
-  window.localStorage.setItem('ga_clientId', tracker.get('clientId'));
-});
-ga('send', 'pageview');
 
 const Analitics = {};
+
+Analitics.initGA = () => {
+  ga('create', 'UA-164642359-1', 'nevio.ml', {
+    anonymizeIp: true,
+    storage: 'none',
+    clientId: window.localStorage.getItem('ga_clientId')
+  });
+  ga(function (tracker) {
+    window.localStorage.setItem('ga_clientId', tracker.get('clientId'));
+  });
+  ga('send', 'pageview');
+};
 
 Analitics.initSentry = () =>
   Sentry.init({
