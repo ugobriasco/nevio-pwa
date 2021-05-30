@@ -23,7 +23,7 @@ Card.renderAudioCard = (props) => {
   audio.id = `audio-${id}`;
 
   const source = document.createElement('source');
-  source.setAttribute('src', `${DBHelper.API_ENDPOINT}/api/audio/${id}/play`);
+  source.setAttribute('src', `${DBHelper.API_ENDPOINT}/audio/${id}/play`);
   source.setAttribute('type', 'audio/mpeg');
 
   //Compose
