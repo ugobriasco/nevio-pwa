@@ -39,7 +39,16 @@ Card.renderArticleCard = (props) => {
   if (!Card.validateInput(props)) {
     return;
   }
-  const { id, title, dist, container, articleHTML, article } = props;
+  const {
+    id,
+    title,
+    dist,
+    container,
+    articleHTML,
+    article,
+    author,
+    source
+  } = props;
 
   // Define card
   const card = document.createElement('div');
@@ -50,8 +59,15 @@ Card.renderArticleCard = (props) => {
   const cardHeader = Card.renderCardHeader({ title, dist, id });
 
   //specific
+
   const normArticle = Card.normalizeContent(article);
   cardHeader.setAttribute('onclick', `openCard("${id}", "${normArticle}");`);
+
+  const authorSection = document.createElement('div');
+  if (author) {
+    authorSection.className = 'sub-header';
+    authorSection.innerHTML = `<p>${author}</p>`;
+  }
 
   const cardBody = document.createElement('div');
   cardBody.className = 'card-body';
@@ -73,6 +89,9 @@ Card.renderArticleCard = (props) => {
   cardFooter.append(buttonPlay);
   cardFooter.append(buttonClose);
   card.append(cardHeader);
+  if (author) {
+    card.append(authorSection);
+  }
   card.append(cardBody);
   card.append(cardFooter);
   container.append(card);
