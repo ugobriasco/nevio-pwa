@@ -1,10 +1,10 @@
 const Card = {};
 
 Card.renderAudioCard = (props) => {
-  const { id, title, dist, container } = props;
-  if (!validateInput) {
+  if (!Card.validateInput(props)) {
     return;
   }
+  const { id, title, dist, container } = props;
 
   // Define card
   const card = document.createElement('div');
@@ -12,7 +12,7 @@ Card.renderAudioCard = (props) => {
   card.id = id;
 
   // Create common sections
-  const cardHeader = renderCardHeader({ title, dist, id });
+  const cardHeader = Card.renderCardHeader({ title, dist, id });
 
   // Create card-specific sections
   const audioContainer = document.createElement('div');
@@ -36,10 +36,10 @@ Card.renderAudioCard = (props) => {
 };
 
 Card.renderArticleCard = (props) => {
-  const { id, title, dist, container, articleHTML, article } = props;
-  if (!validateInput) {
+  if (!Card.validateInput(props)) {
     return;
   }
+  const { id, title, dist, container, articleHTML, article } = props;
 
   // Define card
   const card = document.createElement('div');
@@ -47,10 +47,11 @@ Card.renderArticleCard = (props) => {
   card.id = id;
 
   // Create common sections
-  const cardHeader = renderCardHeader({ title, dist, id });
+  const cardHeader = Card.renderCardHeader({ title, dist, id });
 
   //specific
-  cardHeader.setAttribute('onclick', `openCard("${id}", "${article}");`);
+  const normArticle = Card.normalizeContent(article);
+  cardHeader.setAttribute('onclick', `openCard("${id}", "${normArticle}");`);
 
   const cardBody = document.createElement('div');
   cardBody.className = 'card-body';
@@ -78,10 +79,10 @@ Card.renderArticleCard = (props) => {
 };
 
 Card.renderStoryCard = (props) => {
-  const { id, title, dist, container, description, author } = props;
-  if (!validateInput) {
+  if (!Card.validateInput(props)) {
     return;
   }
+  const { id, title, dist, container, description, author } = props;
 
   // Define card
   const card = document.createElement('div');
@@ -89,7 +90,7 @@ Card.renderStoryCard = (props) => {
   card.id = id;
 
   // Create common sections
-  const cardHeader = renderCardHeader({ title, dist, id });
+  const cardHeader = Card.renderCardHeader({ title, dist, id });
 
   //specific
   cardHeader.setAttribute('onclick', `openCard("${id}");`);
@@ -128,7 +129,14 @@ Card.renderStoryCard = (props) => {
   container.append(card);
 };
 
-const validateInput = (props) => {
+// Utils
+
+Card.normalizeContent = (str) => {
+  const noQuotesString = str.replace(/"/g, '');
+  return noQuotesString.replace(/\r?\n|\r/g, ' ');
+};
+
+Card.validateInput = (props) => {
   if (!props.id) {
     console.log('[Components::Card] missing card id. Card not rendered');
     return false;
@@ -144,7 +152,7 @@ const validateInput = (props) => {
   return true;
 };
 
-const renderCardHeader = (props) => {
+Card.renderCardHeader = (props) => {
   const { title, dist, id } = props;
 
   const cardHeader = document.createElement('div');
