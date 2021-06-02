@@ -32,3 +32,13 @@ Analitics.initSentry = () =>
       'https://d9b20d9f542245458e561ae1f4d6c80d@o383378.ingest.sentry.io/5213500',
     release: `nevio-pwa@${sw.getVersion()}`
   });
+
+Analitics.revokePermissions = () => {
+  if (localStorage['nevio-tnc']) {
+    console.log('Revoking permissions');
+    localStorage.removeItem('ga_clientId');
+    localStorage['nevio-tnc'] = false;
+  }
+  console.log('Cookies cleared');
+  location.href = 'index.html';
+};
