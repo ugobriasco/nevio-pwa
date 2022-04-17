@@ -26,13 +26,13 @@ Start the application:
 
 ## Developing
 
-Here some rules to be followed by changing this application.
+Use node v12.22.12 to compile this project.
 
 ### Generating PWA assets
 
 ```
 npm i -g pwa-asset-generator
-/usr/local/Cellar/node/13.7.0/bin/pwa-asset-generator ./img/logo.png ./img/icons -i ./index.html -m ./manifest.json --background "rgb(37, 40, 49)" --type png
+pwa-asset-generator ./img/logo.png ./img/icons -i ./index.html -m ./manifest.json --background "rgb(37, 40, 49)" --type png
 ```
 
 ### Application versioning
