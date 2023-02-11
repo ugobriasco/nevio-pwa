@@ -1,7 +1,7 @@
 const sw = {};
 
 sw.PATH = '/sw.js';
-sw.version = '1.5.7';
+sw.version = '1.5.8';
 
 sw.init = () => {
   if ('serviceWorker' in navigator) {
