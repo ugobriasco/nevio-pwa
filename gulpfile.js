@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const pump = require('pump');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const minifyHTML = require('gulp-htmlmin');
 const injectCSS = require('gulp-inject-css');

@@ -79,10 +79,13 @@
       </div>
       <div class="footer-content right">
         <span>
-            <small
-              >&copy; 2020 by
-              <a href="https://ugobriasco.me">Ugo Briasco</a> | <a href="./terms.html">Terms and Conditions</a></small
-            >
+          <small
+            >&copy; 
+              <span id="copyright"> 
+                <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+              </span> by <a href="https://ugobriasco.me">Ugo Briasco</a> |
+            <a href="./terms.html">Terms and Conditions</a></small
+          >
         </span>
       </div>
     </footer>
